@@ -1,13 +1,17 @@
 package com.nald;
 
 import java.io.IOException;
+
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.json.JSONObject;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,18 +34,21 @@ public class PersonResource {
 	@GetMapping("Persons")
 	public List<Person> getPerson() {
 		return repo.getPersons();
-
 	}
 
 	ObjectMapper mapper = new ObjectMapper();
 
 	@PostMapping("Create")
-	public Person createPerson(@RequestBody Person person)
+	public Person createPerson(@Valid @RequestBody Person person, BindingResult bindingResult)
 			throws JsonParseException, JsonMappingException, IOException {
 
 //		String result = java.net.URLDecoder.decode(person, StandardCharsets.UTF_8);
 
 //		Person personObject = mapper.readValue(person, Person.class);
+		
+		if (bindingResult.hasErrors()) {
+            System.out.println("Error null values");
+        }
 
 		return repo.createPerson(person);
 	}

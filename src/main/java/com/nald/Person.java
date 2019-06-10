@@ -1,9 +1,17 @@
 package com.nald;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Person {
 
+	@NotNull
+	@Size(min=0, max=30)
 	public String personId;
+	@NotNull
 	public String personName;
+	@NotNull
 	public int personAge;
 
 	public String getPersonId() {

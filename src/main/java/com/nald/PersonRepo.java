@@ -75,7 +75,7 @@ public class PersonRepo {
 	public List<Person> getPersons() {
 		List<Person> persons = new ArrayList<>();
 		String sql = "SELECT * FROM PERSON";
-
+		
 		try {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
@@ -95,5 +95,48 @@ public class PersonRepo {
 
 		return persons;
 	}
+	
+	public List<Child> getChildren(String personId) {
+		List<Child> children = new ArrayList<>();
+		String sql = "SELECT * FROM CHILDREN WHERE PERSONID = "+personId;
 
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+				Child child = new Child();
+				
+				child.setChildId(rs.getString(1));
+				child.setChildName(rs.getString(2));
+				child.setChildAge(rs.getInt(3));
+
+				children.add(child);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return children;
+	}
+	
+	public Child setChildren(Child child) {
+		String sql = "insert into person values(?, ?, ?)";
+
+		try {
+			PreparedStatement st = con.prepareStatement(sql);
+
+//				System.out.println("Person Id : " + p.getPersonId());
+
+			st.setString(1, child.getChildId());
+			st.setString(2, child.getChildName());
+			st.setInt(3, child.getChildAge());
+
+			st.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return child;
+	}
 }

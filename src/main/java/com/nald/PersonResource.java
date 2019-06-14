@@ -46,10 +46,10 @@ public class PersonResource {
 //		String result = java.net.URLDecoder.decode(person, StandardCharsets.UTF_8);
 
 //		Person personObject = mapper.readValue(person, Person.class);
-		
+
 		if (bindingResult.hasErrors()) {
-            System.out.println("Error null values");
-        }
+			System.out.println("Error null values");
+		}
 
 		return repo.createPerson(person);
 	}
@@ -72,9 +72,14 @@ public class PersonResource {
 
 		return person;
 	}
-	
+
 	@GetMapping(value = "getChild/{id}")
 	public List<Child> getChildren(@PathVariable("id") String personId) {
 		return repo.getChildren(personId);
+	}
+
+	@PostMapping(value = "setChild/{id}")
+	public Child setChild(@RequestBody Child child, @PathVariable("id") String personId) {
+		return repo.setChildren(child, personId);
 	}
 }

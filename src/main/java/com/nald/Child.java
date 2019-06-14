@@ -5,6 +5,7 @@ public class Child {
 	public String childId;
 	public String childName;
 	public int childAge;
+	public String personId;
 
 	public String getChildId() {
 		return childId;
@@ -30,8 +31,18 @@ public class Child {
 		this.childAge = childAge;
 	}
 
+	public String getPersonId() {
+		return personId;
+	}
+
+	public void setPersonId(String personId) {
+		this.personId = personId;
+	}
+
 	@Override
 	public String toString() {
-		return "Child [childId=" + childId + ", childName=" + childName + ", childAge=" + childAge + "]";
+		return "Child [childId=" + childId + ", childName=" + childName + ", childAge=" + childAge + ", personId="
+				+ personId + "]";
 	}
+
 }

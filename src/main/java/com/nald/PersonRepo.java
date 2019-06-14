@@ -120,8 +120,8 @@ public class PersonRepo {
 		return children;
 	}
 	
-	public Child setChildren(Child child) {
-		String sql = "insert into person values(?, ?, ?)";
+	public Child setChildren(Child child, String personId) {
+		String sql = "insert into person values(?, ?, ?, ?)";
 
 		try {
 			PreparedStatement st = con.prepareStatement(sql);
@@ -131,6 +131,7 @@ public class PersonRepo {
 			st.setString(1, child.getChildId());
 			st.setString(2, child.getChildName());
 			st.setInt(3, child.getChildAge());
+			st.setString(4,  child.getPersonId());
 
 			st.executeUpdate();
 		} catch (Exception e) {

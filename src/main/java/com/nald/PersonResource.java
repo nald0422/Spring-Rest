@@ -39,6 +39,7 @@ public class PersonResource {
 
 	ObjectMapper mapper = new ObjectMapper();
 
+	@CrossOrigin
 	@PostMapping("Create")
 	public Person createPerson(@Valid @RequestBody Person person, BindingResult bindingResult)
 			throws JsonParseException, JsonMappingException, IOException {
@@ -54,6 +55,7 @@ public class PersonResource {
 		return repo.createPerson(person);
 	}
 
+	@CrossOrigin
 	@PostMapping("List")
 	public List<Person> createPersons(@RequestBody List<Person> person) {
 //		List<Person> persons = new ArrayList<>();
@@ -73,11 +75,13 @@ public class PersonResource {
 		return person;
 	}
 
-	@GetMapping(value = "getChild/{id}")
+	@CrossOrigin
+	@GetMapping(value = "getChildren/{id}")
 	public List<Child> getChildren(@PathVariable("id") String personId) {
 		return repo.getChildren(personId);
 	}
 
+	@CrossOrigin
 	@PostMapping(value = "setChild/{id}")
 	public Child setChild(@RequestBody Child child, @PathVariable("id") String personId) {
 		return repo.setChildren(child, personId);

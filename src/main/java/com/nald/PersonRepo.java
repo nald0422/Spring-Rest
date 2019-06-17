@@ -86,6 +86,7 @@ public class PersonRepo {
 				person.setPersonId(rs.getString(1));
 				person.setPersonName(rs.getString(2));
 				person.setPersonAge(rs.getInt(3));
+				person.setChildren(getChildren(rs.getString(1)));
 
 				persons.add(person);
 			}
@@ -110,6 +111,7 @@ public class PersonRepo {
 				child.setChildId(rs.getString(1));
 				child.setChildName(rs.getString(2));
 				child.setChildAge(rs.getInt(3));
+				child.setPersonId(personId);
 
 				children.add(child);
 			}
@@ -121,7 +123,7 @@ public class PersonRepo {
 	}
 	
 	public Child setChildren(Child child, String personId) {
-		String sql = "insert into person values(?, ?, ?, ?)";
+		String sql = "insert into children values(?, ?, ?, ?)";
 
 		try {
 			PreparedStatement st = con.prepareStatement(sql);

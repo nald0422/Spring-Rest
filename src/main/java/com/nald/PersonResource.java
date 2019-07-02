@@ -86,4 +86,10 @@ public class PersonResource {
 	public Child setChild(@RequestBody Child child, @PathVariable("id") String personId) {
 		return repo.setChildren(child, personId);
 	}
+	
+	@CrossOrigin
+	@PostMapping("login")
+	public List<Authorization> login(@RequestBody ) {
+		return repo.login();
+	}
 }

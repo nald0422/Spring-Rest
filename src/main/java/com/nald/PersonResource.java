@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@CrossOrigin(maxAge = 3600)
 @RestController
 public class PersonResource {
 
@@ -51,7 +51,6 @@ public class PersonResource {
 		if (bindingResult.hasErrors()) {
 			System.out.println("Error null values");
 		}
-
 		return repo.createPerson(person);
 	}
 
@@ -71,7 +70,6 @@ public class PersonResource {
 
 	public Person getPerson(String personId) {
 		Person person = new Person();
-
 		return person;
 	}
 
@@ -86,10 +84,10 @@ public class PersonResource {
 	public Child setChild(@RequestBody Child child, @PathVariable("id") String personId) {
 		return repo.setChildren(child, personId);
 	}
-	
+
 	@CrossOrigin
-	@PostMapping("login")
-	public List<Authorization> login(@RequestBody ) {
-		return repo.login();
+	@GetMapping("getApproved")
+	public List<ApprovedStatus> getApproved() {
+		return repo.getApproved();
 	}
 }

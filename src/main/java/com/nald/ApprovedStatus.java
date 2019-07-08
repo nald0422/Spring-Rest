@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder({ "branch", "documentNo", "applicationDate", "cierDate", "age", "customer", "model", "status",
 		"statusDate", "remarks" })
-public class AprrovedStatus {
+public class ApprovedStatus {
 
 	@JsonProperty("branch")
 	public String branch;

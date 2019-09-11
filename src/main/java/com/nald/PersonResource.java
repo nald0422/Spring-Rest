@@ -90,4 +90,11 @@ public class PersonResource {
 	public List<ApprovedStatus> getApproved() {
 		return repo.getApproved();
 	}
+	
+	@CrossOrigin
+	@PostMapping
+	public Boolean authenticateUser(@RequestBody UserAuth user) {
+		UserRepo userRepo = new UserRepo();
+		return userRepo.authenticateUser(user);
+	}
 }

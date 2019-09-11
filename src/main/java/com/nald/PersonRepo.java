@@ -15,9 +15,9 @@ public class PersonRepo {
 	ResultSet res = null;
 
 	public PersonRepo() {
-		String url = "jdbc:mysql://localhost:3307/test";
+		String url = "jdbc:mysql://localhost:3306/test";
 		String username = "root";
-		String password = "";
+		String password = "tmcdonald";
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -31,6 +31,7 @@ public class PersonRepo {
 
 		String sql = "insert into person values(?, ?, ?)";
 
+		
 		try {
 			PreparedStatement st = con.prepareStatement(sql);
 

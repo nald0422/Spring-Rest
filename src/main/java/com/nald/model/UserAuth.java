@@ -1,4 +1,4 @@
-package com.nald;
+package com.nald.model;
 
 public class UserAuth {
 

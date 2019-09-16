@@ -1,4 +1,6 @@
-package com.nald;
+package com.nald.service;
+
+import com.nald.model.UserAuth;
 
 public class UserRepo {
 	public Boolean authenticateUser(UserAuth user) {

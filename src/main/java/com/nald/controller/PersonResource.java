@@ -1,4 +1,4 @@
-package com.nald;
+package com.nald.controller;
 
 import java.io.IOException;
 
@@ -25,6 +25,12 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nald.ApprovedStatus;
+import com.nald.Child;
+import com.nald.Person;
+import com.nald.PersonRepo;
+import com.nald.model.UserAuth;
+import com.nald.service.UserRepo;
 
 @RestController
 public class PersonResource {

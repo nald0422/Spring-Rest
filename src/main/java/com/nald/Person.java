@@ -15,7 +15,7 @@ public class Person {
 	public String personName;
 	@NotNull
 	public int personAge;
-	public List<Child> children;
+//	public List<Child> children;
 
 	public String getPersonId() {
 		return personId;
@@ -41,18 +41,18 @@ public class Person {
 		this.personAge = personAge;
 	}
 
-	public List<Child> getChildren() {
-		return children;
-	}
+//	public List<Child> getChildren() {
+//		return children;
+//	}
+//
+//	public void setChildren(List<Child> children) {
+//		this.children = children;
+//	}
 
-	public void setChildren(List<Child> children) {
-		this.children = children;
-	}
-
-	@Override
-	public String toString() {
-		return "Person [personId=" + personId + ", personName=" + personName + ", personAge=" + personAge
-				+ ", children=" + children + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Person [personId=" + personId + ", personName=" + personName + ", personAge=" + personAge
+//				+ ", children=" + children + "]";
+//	}
 
 }

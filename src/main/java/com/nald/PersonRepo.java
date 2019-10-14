@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nald.model.Stock_Request;
+
 public class PersonRepo {
 
 	Connection con = null;
@@ -31,7 +33,6 @@ public class PersonRepo {
 
 		String sql = "insert into person values(?, ?, ?)";
 
-		
 		try {
 			PreparedStatement st = con.prepareStatement(sql);
 
@@ -186,5 +187,34 @@ public class PersonRepo {
 		}
 
 		return asList;
+	}
+
+	public List<Stock_Request> createStockRequest(List<Stock_Request> stockRequest) {
+
+		String sql = "insert into tbl_stock_request values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		try {
+			for (Stock_Request sr : stockRequest) {
+				PreparedStatement st = con.prepareStatement(sql);
+
+//				System.out.println("Person Id : " + p.getPersonId());
+
+				st.setString(1, sr.getSR_Brand());
+				st.setString(2, sr.getSR_Model_No());
+				st.setString(3, sr.getSR_Description());
+				st.setInt(4, sr.getSR_Suggested_Order());
+				st.setInt(5, sr.getSR_Quantity());
+				st.setString(6, sr.getSR_UM());
+				st.setString(7, sr.getSR_Recommendation());
+				st.setString(8, sr.getSR_Site());
+				st.setString(9, sr.getSR_Remarks());
+
+				st.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return stockRequest;
 	}
 }

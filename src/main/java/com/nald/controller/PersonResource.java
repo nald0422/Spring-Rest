@@ -29,6 +29,7 @@ import com.nald.ApprovedStatus;
 import com.nald.Child;
 import com.nald.Person;
 import com.nald.PersonRepo;
+import com.nald.model.Stock_Request;
 import com.nald.model.UserAuth;
 import com.nald.service.UserRepo;
 
@@ -78,6 +79,16 @@ public class PersonResource {
 	public Person getPerson(String personId) {
 		Person person = new Person();
 		return person;
+	}
+	
+	@CrossOrigin
+	@PostMapping("requestedStocks")
+	public List<Stock_Request> requestedStocks(@RequestBody List<Stock_Request> stockRequest) {
+		for (Stock_Request sr : stockRequest) {
+			System.out.println(sr.toString());
+		}
+		
+		return repo.createStockRequest(stockRequest);
 	}
 
 	@CrossOrigin
